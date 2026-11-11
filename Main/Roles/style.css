@@ -1,0 +1,361 @@
+body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #f8f9fa, #e0f7fa);
+      margin: 0;
+    }
+
+  .navbar {
+  background: linear-gradient(to right, #6a11cb, #2575fc);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 32px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  color: white;
+}
+.navbar .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.nav-links {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+}
+.nav-links li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  padding: 5px 10px;
+  font-size: 20px;
+}
+.nav-links li a:hover,
+.nav-links li a.active {
+  color: yellow;
+  border-bottom: 2px solid yellow;
+}
+
+.hamburger {
+  font-size: 2rem;
+  display: none;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    position: absolute;
+    top: 70px;
+    right: 0;
+    width: 100%;
+    text-align: center;
+    gap: 10px;
+    padding: 20px 0;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .nav-links li a {
+    padding: 12px;
+    font-size: 1.1rem;
+  }
+}
+
+
+
+    h1 {
+      text-align: center;
+      color: #222;
+      font-size: 38px;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 30px;
+      margin: 40px 0 20px;
+      color: #444;
+      text-decoration: underline;
+    }
+
+    .roles-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .role-card {
+      background: white;
+      border-radius: 20px;
+      padding: 20px;
+      width: 300px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      color: black;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .role-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .role-card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 12px;
+      margin-bottom: 10px;
+    }
+
+    .role-title {
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+
+    .role-desc {
+      font-size: 14px;
+      margin-bottom: 10px;
+      opacity: 0.9;
+    }
+
+    .toggle-btn {
+      background: rgba(255, 255, 255, 0.2);
+      color: black;
+      padding: 8px 12px;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      border-radius: 10px;
+      cursor: pointer;
+      margin-bottom: 10px;
+      transition: background 0.3s ease;
+    }
+
+    .toggle-btn:hover {
+      background: rgba(255, 255, 255, 0.4);
+    }
+
+    .details {
+      display: none;
+      font-size: 13px;
+    }
+
+    .section-heading {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    /* Color backgrounds */
+    .frontend-0 { background: linear-gradient(135deg, #ff9a9e, #f5c6b9); }
+    .frontend-1 { background: linear-gradient(135deg, #a18cd1, #fbc2eb); }
+    .frontend-2 { background: linear-gradient(135deg, #fbc2eb, #a6c1ee); }
+    .frontend-3 { background: linear-gradient(135deg, #f6d365, #fda085); }
+    .frontend-4 { background: linear-gradient(135deg, #fdcbf1, #c2b3c8); }
+    .frontend-5 { background: linear-gradient(135deg, #84fab0, #8fd3f4); }
+    .frontend-6 { background: linear-gradient(135deg, #cfd9df, #80b5d2); }
+    .frontend-7 { background: linear-gradient(135deg, #ffecd2, #fcb69f); }
+    .frontend-8 { background: linear-gradient(135deg, #d4fc79, #96e6a1); }
+    .frontend-9 { background: linear-gradient(135deg, #fddb92, #d1fdff); }
+
+    .backend-0 {
+  background: linear-gradient(135deg, #dfe9f3, #ffffff);
+}
+
+.backend-1 {
+  background: linear-gradient(135deg, #c9d6ff, #e2e2e2);
+}
+
+.backend-2 {
+  background: linear-gradient(135deg, #b2fefa, #0ed2f7);
+}
+
+.backend-3 {
+  background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
+}
+
+.backend-4 {
+  background: linear-gradient(135deg, #d4fc79, #96e6a1);
+}
+
+.backend-5 {
+  background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
+}
+
+.backend-6 {
+  background: linear-gradient(135deg, #89f7fe, #66a6ff);
+}
+
+.backend-7 {
+  background: linear-gradient(135deg, #d5dee7, #ffecd2);
+}
+
+.backend-8 {
+  background: linear-gradient(135deg, #cfd9df, #e2ebf0);
+}
+
+.backend-9 {
+  background: linear-gradient(135deg, #e0c3fc, #8ec5fc);
+}
+
+.card-bg-0 { background: linear-gradient(135deg, #a8edea, #fed6e3); }
+    .card-bg-1 { background: linear-gradient(135deg, #cfd9df, #e2ebf0); }
+    .card-bg-2 { background: linear-gradient(135deg, #fddb92, #d1fdff); }
+    .card-bg-3 { background: linear-gradient(135deg, #f6d365, #fda085); }
+    .card-bg-4 { background: linear-gradient(135deg, #e0c3fc, #8ec5fc); }
+    .card-bg-5 { background: linear-gradient(135deg, #84fab0, #8fd3f4); }
+    .card-bg-6 { background: linear-gradient(135deg, #fccb90, #d57eeb); }
+    .card-bg-7 { background: linear-gradient(135deg, #ff9a9e, #fad0c4); }
+    .card-bg-8 { background: linear-gradient(135deg, #c2e9fb, #a1c4fd); }
+    .card-bg-9 { background: linear-gradient(135deg, #e0f7fa, #80deea); }
+
+
+    .quiz-section {
+  background: linear-gradient(145deg, #f5f7fa, #e2e8f0);
+  padding: 30px;
+  border-radius: 20px;
+  max-width: 500px;
+  margin: 40px auto;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.quiz-section:hover {
+  transform: scale(1.02);
+}
+
+.quiz-section h3 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  color: #2b6cb0;
+}
+
+.quiz-section p {
+  font-size: 1rem;
+  color: #4a5568;
+  margin-bottom: 20px;
+}
+
+.quiz-section textarea {
+  width: 90%;
+  height: 60px;
+  margin: 10px auto;
+  padding: 10px 15px;
+  font-size: 1rem;
+  border: 2px solid #cbd5e0;
+  border-radius: 10px;
+  resize: none;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.quiz-section textarea:focus {
+  border-color: #3182ce;
+  outline: none;
+  background: #edf2f7;
+  box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.3);
+}
+
+.quiz-section button {
+  margin-top: 20px;
+  padding: 12px 25px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+  background: linear-gradient(to right, #667eea, #764ba2);
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.quiz-section button:hover {
+  background: linear-gradient(to right, #5a67d8, #6b46c1);
+  box-shadow: 0 4px 15px rgba(118, 75, 162, 0.4);
+  transform: translateY(-2px);
+}
+
+/* Shared Section Styling */
+.mock-button,
+.testimonial-section,
+.roadmap-section {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 30px 25px;
+  border-radius: 20px;
+  text-align: center;
+  background: linear-gradient(135deg, #fdfbfb, #ebedee);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.07);
+  transition: transform 0.3s ease;
+}
+
+.mock-button:hover,
+.testimonial-section:hover,
+.roadmap-section:hover {
+  transform: scale(1.02);
+}
+
+/* Headings */
+.mock-button h3,
+.testimonial-section h3,
+.roadmap-section h3 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+  color: #2c5282;
+}
+
+/* Mock Button */
+.mock-button a {
+  display: inline-block;
+  padding: 12px 30px;
+  font-size: 1rem;
+  color: white;
+  background: linear-gradient(to right, #38b2ac, #3182ce);
+  border-radius: 30px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  font-weight: bold;
+}
+
+.mock-button a:hover {
+  background: linear-gradient(to right, #319795, #2b6cb0);
+  box-shadow: 0 4px 15px rgba(49, 130, 206, 0.4);
+  transform: translateY(-2px);
+}
+
+/* Testimonials */
+.testimonial-section p {
+  font-style: italic;
+  color: #4a5568;
+  font-size: 1rem;
+  margin-top: 10px;
+}
+
+/* Roadmap */
+.roadmap-section p {
+  font-size: 1.1rem;
+  color: #2d3748;
+  background: #edf2f7;
+  padding: 15px;
+  border-radius: 12px;
+  margin-top: 10px;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+}

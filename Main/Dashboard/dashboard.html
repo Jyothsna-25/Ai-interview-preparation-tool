@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI Interview Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet"/>
+</head>
+<body class="bg-gradient-to-r from-indigo-50 via-blue-50 to-indigo-100 min-h-screen text-gray-800">
+
+  <!-- Navbar -->
+  <nav class="navbar bg-gradient-to-r from-purple-600 to-blue-500 px-6 py-4 flex justify-between items-center sticky top-0 z-50 shadow-lg">
+    <div class="logo text-2xl font-extrabold text-white tracking-wide">InterviewPrepAI</div>
+    <div class="hamburger text-3xl text-white cursor-pointer md:hidden" onclick="toggleMenu()">☰</div>
+    <ul id="navLinks" class="nav-links hidden md:flex gap-6 text-white font-medium">
+      <li><a href="../main.html" class="hover:text-yellow-300 transition">Home</a></li>
+      <li><a href="../Roles/index.html" class="hover:text-yellow-300 transition">Roles</a></li>
+      <li><a href="../interview-questions-ai/index.html" class="hover:text-yellow-300 transition">Practice</a></li>
+      <li><a href="../Mock-Interview/mock.html" class="hover:text-yellow-300 transition">Mock Interview</a></li>
+      <li><a href="#" class="hover:text-yellow-300 transition">Dashboard</a></li>
+    </ul>
+  </nav>
+
+  <!-- Dashboard Header -->
+  <section class="py-10 text-center">
+    <h1 class="text-4xl font-bold text-indigo-700 drop-shadow-lg mb-6" data-aos="zoom-in">✨ My Dashboard</h1>
+    
+    <!-- Profile Card -->
+    <div class="max-w-xl mx-auto bg-gradient-to-r from-indigo-600 to-blue-500 rounded-2xl p-6 flex items-center justify-between shadow-xl hover:scale-[1.02] transition" data-aos="fade-up">
+      <div id="profileTrigger" class="flex items-center space-x-4 cursor-pointer">
+        <i class="fas fa-user-circle text-white text-5xl"></i>
+        <div class="text-left">
+          <p id="displayName" class="text-lg font-semibold text-white">John Doe</p>
+          <p id="displayEmail" class="text-sm text-indigo-200">john.doe@example.com</p>
+        </div>
+      </div>
+      <button id="signOutBtn" class="px-5 py-2 bg-red-600 hover:bg-red-700 text-white rounded-lg shadow-lg transition">Sign Out</button>
+    </div>
+  </section>
+
+  <!-- Streak -->
+  <div class="text-center my-6">
+    <h3 class="text-xl font-semibold text-gray-700">🔥 Current Streak: <span id="streak-count" class="text-indigo-600 font-bold">0</span> days</h3>
+  </div>
+
+  <!-- Progress Section -->
+<h1 class="text-3xl font-bold text-center text-indigo-700 my-8" data-aos="fade-up">📊 Practice & Mock Interview Dashboard</h1>
+<div class="dashboard grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-5xl mx-auto px-6">
+  <!-- Practice -->
+  <div class="card1 bg-white rounded-2xl shadow-lg p-6 hover:shadow-2xl transition flex flex-col items-center" data-aos="flip-left">
+    <div id="practiceCircle" class="progress-circle bg-indigo-100 w-40 h-40 flex items-center justify-center rounded-full text-2xl font-bold mb-4">0%</div>
+    <h3 class="text-lg font-semibold text-gray-700 text-center">Practice Progress</h3>
+    <p class="stats text-gray-500">Completed: <span id="practiceCompleted">0</span> / <span id="practiceTarget">5</span></p>
+  </div>
+  <!-- Mock -->
+  <div class="card1 bg-white rounded-2xl shadow-lg p-6 hover:shadow-2xl transition flex flex-col items-center" data-aos="flip-right">
+    <div id="mockCircle" class="progress-circle bg-indigo-100 w-40 h-40 flex items-center justify-center rounded-full text-2xl font-bold mb-4">0%</div>
+    <h3 class="text-lg font-semibold text-gray-700 text-center">Mock Interview Progress</h3>
+    <p class="stats text-gray-500">Completed: <span id="mockCompleted">0</span> / <span id="mockTarget">2</span></p>
+  </div>
+</div>
+
+<!-- Question of the Day -->
+<h1 class="text-3xl font-bold text-center text-indigo-700 mt-14 mb-6" data-aos="fade-up">💡 Question of the Day</h1>
+<div class="card1 bg-white rounded-2xl shadow-lg p-6 max-w-3xl mx-auto hover:shadow-2xl transition" data-aos="fade-up">
+  <h3 id="qodTitle" class="text-xl font-bold text-indigo-600 mb-4 break-words">Loading question...</h3>
+  <pre id="qodCode" class="bg-gray-100 p-4 rounded-lg text-left text-sm whitespace-pre-wrap break-words"></pre>
+  <p id="qodDifficulty" class="stats text-gray-600 mt-2"></p>
+</div>
+
+  <!-- Profile Modal -->
+<div id="profileModal" class="fixed inset-0 bg-black bg-opacity-40 hidden flex items-center justify-center z-50">
+  <div class="relative bg-white rounded-2xl shadow-xl p-6 w-11/12 max-w-md transform scale-100 transition-all" data-aos="zoom-in">
+    <span class="close-btn absolute top-4 right-6 text-indigo-600 text-3xl cursor-pointer">&times;</span>
+    <h2 class="text-2xl font-bold mb-6 text-indigo-700">Edit Profile</h2>
+    <div class="space-y-4">
+      <input type="text" id="profileName" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-indigo-400" placeholder="Name">
+      <input type="email" id="profileEmail" class="w-full p-3 border rounded-lg bg-gray-100" placeholder="Email" disabled>
+      <select id="profileRole" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-indigo-400">
+        <option value="Frontend Developer">Frontend Developer</option>
+        <option value="Backend Developer">Backend Developer</option>
+        <option value="Fullstack Developer">Fullstack Developer</option>
+      </select>
+      <input type="number" id="profileExperience" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-indigo-400" placeholder="Experience (years)">
+      <select id="profileSkillLevel" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-indigo-400">
+        <option value="beginner">Beginner</option>
+        <option value="intermediate">Intermediate</option>
+        <option value="advanced">Advanced</option>
+      </select>
+      <button id="updateBtn" class="w-full bg-indigo-600 text-white p-3 rounded-lg hover:bg-indigo-700 transition">Save Changes</button>
+    </div>
+  </div>
+</div>
+
+
+  <!-- Scripts -->
+  <script>AOS.init();</script>
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById("navLinks");
+      nav.classList.toggle("hidden");
+      nav.classList.toggle("flex");
+      nav.classList.toggle("flex-col");
+      nav.classList.toggle("absolute");
+      nav.classList.toggle("bg-gradient-to-r");
+      nav.classList.toggle("from-purple-600");
+      nav.classList.toggle("to-blue-500");
+      nav.classList.toggle("top-16");
+      nav.classList.toggle("right-4");
+      nav.classList.toggle("rounded-lg");
+      nav.classList.toggle("p-4");
+    }
+  </script>
+  <script>
+  AOS.init();
+
+  // --- Toggle Mobile Menu ---
+  function toggleMenu() {
+    const nav = document.getElementById("navLinks");
+    nav.classList.toggle("hidden");
+  }
+
+  // --- Modal Logic ---
+  const profileModal = document.getElementById("profileModal");
+  const profileTrigger = document.getElementById("profileTrigger");
+  const closeBtn = document.querySelector(".close-btn");
+
+  profileTrigger.addEventListener("click", () => profileModal.classList.remove("hidden"));
+  closeBtn.addEventListener("click", () => profileModal.classList.add("hidden"));
+  window.addEventListener("click", (e) => { if (e.target === profileModal) profileModal.classList.add("hidden"); });
+
+  // --- Fetch User Data and Update Dashboard ---
+  const email = localStorage.getItem("email");
+  if (!email) alert("No email found. Please login first.");
+
+  fetch(`http://localhost:5000/me?email=${email}`)
+    .then(res => res.json())
+    .then(user => {
+      // Profile Info
+      document.getElementById("profileName").value = user.name;
+      document.getElementById("profileEmail").value = user.email;
+      document.getElementById("profileRole").value = user.role || "";
+      document.getElementById("profileExperience").value = user.experience || "";
+      document.getElementById("profileSkillLevel").value = user.skillLevel || "";
+      document.getElementById("displayName").textContent = user.name;
+      document.getElementById("displayEmail").textContent = user.email;
+
+      // Progress Animations
+      animateCircle("practiceCircle", user.questionsPracticed || 0, 100, "practiceCompleted", "practiceTarget");
+      animateCircle("mockCircle", user.lastInterviewScore || 0, 50, "mockCompleted", "mockTarget");
+    })
+    .catch(err => console.log(err));
+
+  // --- Animate Circular Progress ---
+  function animateCircle(circleId, completed, target, compId, targetId) {
+    const circle = document.getElementById(circleId);
+    const compEl = document.getElementById(compId);
+    const targetEl = document.getElementById(targetId);
+
+    compEl.textContent = completed;
+    targetEl.textContent = target;
+
+    const percentage = Math.min(100, Math.floor((completed / target) * 100));
+    let current = 0;
+
+    const interval = setInterval(() => {
+      if (current >= percentage) clearInterval(interval);
+      else {
+        current++;
+        circle.textContent = current + "%";
+        circle.style.background = `conic-gradient(#6366f1 ${current}%, #e5e7eb ${current}% 100%)`;
+      }
+    }, 20);
+  }
+
+  // --- Update Profile Data ---
+  document.getElementById("updateBtn").addEventListener("click", () => {
+    const updatedData = {
+      name: document.getElementById("profileName").value,
+      role: document.getElementById("profileRole").value,
+      experience: Number(document.getElementById("profileExperience").value),
+      skillLevel: document.getElementById("profileSkillLevel").value
+    };
+
+    fetch(`http://localhost:5000/me?email=${email}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(updatedData)
+    })
+      .then(res => res.json())
+      .then(user => {
+        alert("✅ Profile updated successfully!");
+        profileModal.classList.add("hidden");
+        document.getElementById("displayName").textContent = user.name;
+        document.getElementById("displayEmail").textContent = user.email;
+      })
+      .catch(err => console.log(err));
+  });
+
+  // --- Question of the Day ---
+  const codingQuestions = [
+    { question: "Write a function to reverse a string.", difficulty: "easy", sampleCode: "function reverseString(s){ return s.split('').reverse().join(''); }" },
+    { question: "Check if a number is prime.", difficulty: "easy", sampleCode: "function isPrime(n){ for(let i=2;i<n;i++){if(n%i===0) return false;} return n>1; }" },
+    { question: "Implement binary search on a sorted array.", difficulty: "medium", sampleCode: "function binarySearch(arr,target){ let l=0,r=arr.length-1; while(l<=r){ let m=Math.floor((l+r)/2); if(arr[m]===target)return m; else if(arr[m]<target)l=m+1; else r=m-1;} return -1; }" },
+    { question: "Implement quicksort algorithm.", difficulty: "difficult", sampleCode: "function quickSort(arr){ if(arr.length<=1) return arr; let pivot=arr[0]; let left=arr.slice(1).filter(x=>x<pivot); let right=arr.slice(1).filter(x=>x>=pivot); return [...quickSort(left),pivot,...quickSort(right)]; }" }
+  ];
+
+  function showQuestionOfTheDay() {
+    const q = codingQuestions[Math.floor(Math.random() * codingQuestions.length)];
+    document.getElementById("qodTitle").textContent = q.question;
+    document.getElementById("qodDifficulty").textContent = "Difficulty: " + q.difficulty;
+    document.getElementById("qodCode").textContent = q.sampleCode;
+  }
+  showQuestionOfTheDay();
+
+  // --- Sign Out ---
+  document.getElementById("signOutBtn").addEventListener("click", () => {
+    localStorage.clear();
+    window.location.href = "../../../index.html";
+  });
+
+  // --- Fetch Streak ---
+  fetch("http://localhost:5000/get-streak", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email })
+  })
+    .then(res => res.json())
+    .then(data => { document.getElementById("streak-count").innerText = data.streak; });
+</script>
+
+
+</body>
+</html>

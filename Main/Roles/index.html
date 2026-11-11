@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Developer Roles</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav class="navbar" data-aos="fade-down">
+  <div class="logo">InterviewPrepAI</div>
+  <div class="hamburger" onclick="toggleMenu()">
+    &#9776;
+  </div>
+
+  <ul class="nav-links" id="navLinks">
+    <li><a href="../main.html">Home</a></li>
+    <li><a href="#">Roles</a></li>
+    <li><a href="../interview-questions-ai/index.html">Practice</a></li>
+    <li><a href="../Mock-Interview/mock.html">Mock Interview</a></li>
+    <li><a href="../Dashboard/dashboard.html">Dashboard</a></li>
+  </ul>
+</nav>
+
+  <h1>Developer Career Roles</h1>
+
+  <h2>Frontend Developer Roles</h2>
+  <div class="roles-container" id="frontendContainer"></div>
+
+  <h2>Backend Developer Roles</h2>
+  <div class="roles-container" id="backendContainer"></div>
+
+  <h1>Other Developer Roles</h1>
+  <div class="roles-container" id="rolesContainer"></div>
+
+  <!-- Role Suggestion Quiz -->
+    <div class="quiz-section">
+      <h3>🤔 Not Sure What Role Fits You?</h3>
+      <p>Answer a few questions and we’ll suggest a role:</p>
+      <textarea placeholder="What's your favorite language or tool?"></textarea><br>
+      <textarea placeholder="Do you enjoy building visuals or logic?"></textarea><br>
+      <button onclick="alert('You’d make a great Frontend Developer!')">Suggest Role</button>
+    </div>
+
+    <!-- Mock Interview -->
+    <div class="mock-button">
+      <h3>🎤 Ready for a Mock Interview?</h3>
+      <a href="mock.html">Start Now</a>
+    </div>
+
+    <!-- Testimonials -->
+    <div class="testimonial-section">
+      <h3>💬 What Others Say</h3>
+      <p>"This platform helped me ace my interviews!" – Priya S.</p>
+      <p>"The mock interviews felt real and helped boost my confidence." – Rakesh K.</p>
+    </div>
+
+     <!-- Roadmap -->
+    <div class="roadmap-section">
+      <h3>🛣️ Your Learning Roadmap</h3>
+      <p>Start with Basics → Practice Challenges → Build Projects → Mock Interviews → Get Hired</p>
+    </div>
+
+  <script>
+
+     function toggleMenu() {
+      const nav = document.getElementById("navLinks");
+      nav.classList.toggle("show");
+    }
+
+    const imageURLs = {
+      frontend: [
+        "../../images/frontend/junior.webp", 
+        "../../images/frontend/mid.jpeg" ,
+        "../../images/frontend/senior.jpeg",
+        "../../images/frontend/uiux.png",
+        "../../images/frontend/framework.webp",
+        "../../images/frontend/mobile.jpg",
+        "../../images/frontend/web.jpeg",
+        "../../images/frontend/accessibility.jpg",
+        "../../images/frontend/devlops.avif",
+        "../../images/frontend/fullstack.png"
+      ],
+      backend: [
+        "../../images/backend/junior.jpg", 
+        "../../images/backend/mid.png",
+        "../../images/backend/senior.jpeg",
+        "../../images/backend/api.png",
+        "../../images/backend/database.jpg",
+        "../../images/backend/devlops.jpeg",
+        "../../images/backend/cloud.png",
+        "../../images/backend/security.png",
+        "../../images/backend/testing.png",
+        "../../images/backend/fullstack.png"
+      ],
+      others: [
+        "../../images/other/fullstack.png",
+        "../../images/other/devlops.webp",
+        "../../images/other/mobile.jpeg",
+        "../../images/other/data.png",
+        "../../images/other/cloud.jpeg",
+        "../../images/other/machine.png",
+        "../../images/other/qa engineer.jpeg",
+        "../../images/other/uiux.jpeg",
+        "../../images/other/security.jpeg",
+        "../../images/other/embedded.jpeg"
+      ]
+    };
+
+    const frontendRoles = [
+      { title: "Junior Frontend Developer", description: "Entry-level developer focusing on basic HTML, CSS, and JavaScript.", skills: ["HTML", "CSS", "JavaScript", "Git Basics", "Responsive Design"], interviewTopics: ["HTML Tags", "CSS Selectors", "JavaScript Basics", "Simple DOM"] },
+      { title: "Mid-Level Frontend Developer", description: "Experienced developer with deeper JavaScript and framework knowledge.", skills: ["ES6+", "React/Vue", "Browser APIs", "Debugging", "Accessibility"], interviewTopics: ["Promises", "APIs", "Framework Lifecycle", "Event Handling"] },
+      { title: "Senior Frontend Developer", description: "Expert in frontend architecture, mentorship, and optimization.", skills: ["Design Patterns", "State Management", "Performance", "Leadership"], interviewTopics: ["Code Splitting", "Advanced React", "Design Systems", "Code Review"] },
+      { title: "Frontend UI/UX Developer", description: "Focuses on implementing UI designs and user experience flows.", skills: ["Figma/XD", "Animations", "Layout Systems", "Accessibility"], interviewTopics: ["CSS Grid/Flexbox", "Transitions", "A11y", "Design Systems"] },
+      { title: "Framework Specialist (React/Vue/Angular)", description: "Deep expertise in a specific JS framework or library.", skills: ["Hooks", "Vue Directives", "Angular Modules", "Routing", "Testing"], interviewTopics: ["State Management", "Routing", "Component Design", "Hooks"] },
+      { title: "Mobile Frontend Developer", description: "Optimizes frontend for mobile web or builds hybrid apps.", skills: ["Responsive Design", "PWA", "React Native", "Mobile UX"], interviewTopics: ["Media Queries", "Viewport Meta", "Touch Events", "App Shell"] },
+      { title: "Web Performance Engineer", description: "Focuses on speed, performance, and optimization techniques.", skills: ["Lighthouse", "Lazy Loading", "Code Splitting", "Caching"], interviewTopics: ["Critical Rendering Path", "Web Vitals", "Minification"] },
+      { title: "Accessibility Specialist", description: "Ensures apps are usable for people with disabilities.", skills: ["ARIA", "Keyboard Nav", "Screen Readers", "WCAG"], interviewTopics: ["Semantic HTML", "ARIA Roles", "Color Contrast", "Testing A11y"] },
+      { title: "Frontend DevOps / Build Engineer", description: "Sets up tooling, bundlers, and CI/CD for frontend workflows.", skills: ["Webpack", "Vite", "Rollup", "CI/CD", "Linting"], interviewTopics: ["Build Optimization", "Tree Shaking", "GitHub Actions"] },
+      { title: "Full Stack Developer (Frontend-Heavy)", description: "Builds both frontend and backend with focus on client-side.", skills: ["React", "Node.js", "Express", "APIs", "MongoDB"], interviewTopics: ["REST APIs", "JWT", "React + Node Integration"] }
+    ];
+
+    const backendRoles = [
+      { title: "Junior Backend Developer", description: "Entry-level developer focused on server-side basics and databases.", skills: ["Node.js/Python", "SQL Basics", "APIs", "Git", "REST"], interviewTopics: ["CRUD", "Loops", "Simple API", "Basic DB Design"] },
+      { title: "Mid-Level Backend Developer", description: "Handles business logic, database queries, and integrations.", skills: ["Express/Django", "ORMs", "Authentication", "API Design"], interviewTopics: ["REST vs RPC", "Middleware", "Joins", "Sessions"] },
+      { title: "Senior Backend Developer", description: "Expert in architecture, performance, and team guidance.", skills: ["Microservices", "Scalability", "Caching", "Architecture"], interviewTopics: ["Load Balancing", "Queues", "Horizontal Scaling", "SOLID"] },
+      { title: "API Developer", description: "Specializes in building RESTful and GraphQL APIs.", skills: ["REST", "GraphQL", "Rate Limiting", "Postman/Swagger"], interviewTopics: ["Status Codes", "Pagination", "GraphQL Resolvers"] },
+      { title: "Database Engineer", description: "Designs efficient database schemas and queries.", skills: ["SQL", "NoSQL", "Indexes", "Normalization"], interviewTopics: ["Joins", "Sharding", "ACID", "Transactions"] },
+      { title: "DevOps Engineer", description: "Automates deployments, monitoring, and infrastructure.", skills: ["CI/CD", "Docker", "Kubernetes", "Monitoring"], interviewTopics: ["Pipelines", "Containers", "Scaling", "GitHub Actions"] },
+      { title: "Cloud Backend Developer", description: "Builds backend apps using cloud-native tools.", skills: ["AWS/GCP", "Lambda", "Serverless", "Storage"], interviewTopics: ["IAM", "S3", "Serverless Design", "Auto-scaling"] },
+      { title: "Security Engineer", description: "Secures backend systems against vulnerabilities.", skills: ["OAuth2", "JWT", "Input Validation", "Encryption"], interviewTopics: ["OWASP", "CSRF/XSS", "Token Storage", "Roles"] },
+      { title: "Backend QA/Testing Engineer", description: "Focuses on automated testing of backend services.", skills: ["Unit Tests", "Mocking", "Integration Tests", "Jest/PyTest"], interviewTopics: ["Test Coverage", "TDD", "Assertions", "Mock DB"] },
+      { title: "Full Stack Developer (Backend-Heavy)", description: "Handles full applications, mainly backend responsibilities.", skills: ["Node.js", "React", "MongoDB", "API Integration"], interviewTopics: ["MERN Stack", "CRUD", "Security", "Deployments"] }
+    ];
+
+    const roles = [
+      {
+        title: "Full Stack Developer",
+        description: "Handles both frontend and backend development.",
+        skills: ["React", "Node.js", "MongoDB", "REST APIs"],
+        interviewTopics: ["Auth", "CRUD", "MVC", "Deployment"]
+      },
+      {
+        title: "DevOps Engineer",
+        description: "Automates deployments and ensures system reliability.",
+        skills: ["CI/CD", "Docker", "Kubernetes", "Monitoring"],
+        interviewTopics: ["Pipelines", "Scaling", "Load Balancing"]
+      },
+      {
+        title: "Mobile Developer",
+        description: "Builds apps for Android and iOS platforms.",
+        skills: ["React Native", "Flutter", "Kotlin", "Swift"],
+        interviewTopics: ["State Management", "Navigation", "API Integration"]
+      },
+      {
+        title: "Data Scientist",
+        description: "Analyzes data to extract insights and build models.",
+        skills: ["Python", "Pandas", "Scikit-learn", "Statistics"],
+        interviewTopics: ["Regression", "Classification", "EDA"]
+      },
+      {
+        title: "Cloud Engineer",
+        description: "Builds scalable infrastructure on cloud platforms.",
+        skills: ["AWS", "Azure", "Terraform", "Serverless"],
+        interviewTopics: ["EC2", "S3", "IAM", "Scaling"]
+      },
+      {
+        title: "Machine Learning Engineer",
+        description: "Deploys and optimizes ML models in production.",
+        skills: ["TensorFlow", "PyTorch", "ML Pipelines", "Model Tuning"],
+        interviewTopics: ["Overfitting", "Training", "Metrics"]
+      },
+      {
+        title: "QA Engineer",
+        description: "Tests software manually and automatically for bugs.",
+        skills: ["Selenium", "Postman", "Jest", "Cypress"],
+        interviewTopics: ["Test Cases", "Bug Reporting", "Automation"]
+      },
+      {
+        title: "UI/UX Designer",
+        description: "Designs intuitive user interfaces and experiences.",
+        skills: ["Figma", "Adobe XD", "User Flows", "Wireframing"],
+        interviewTopics: ["Accessibility", "Design Systems", "User Research"]
+      },
+      {
+        title: "Security Engineer",
+        description: "Ensures application and infrastructure security.",
+        skills: ["OWASP", "Encryption", "Pen Testing", "Firewalls"],
+        interviewTopics: ["XSS", "CSRF", "Vulnerabilities"]
+      },
+      {
+        title: "Embedded Systems Developer",
+        description: "Programs microcontrollers and low-level systems.",
+        skills: ["C/C++", "RTOS", "I2C/SPI", "Circuit Design"],
+        interviewTopics: ["Interrupts", "Memory Management", "Timers"]
+      }
+    ];
+
+
+    const frontendContainer = document.getElementById("frontendContainer");
+    const backendContainer = document.getElementById("backendContainer");
+    const rolesContainer = document.getElementById("rolesContainer");
+
+    function renderRoles(container, roles, prefix, images) {
+  roles.forEach((role, index) => {
+    const card = document.createElement("div");
+    card.className = `role-card ${prefix}-${index}`;
+    const imgSrc = images[index % images.length];
+
+    card.innerHTML = `
+      <img src="${imgSrc}" alt="${role.title} image" />
+      <div class="role-title">${role.title}</div>
+      <div class="role-desc">${role.description}</div>
+      <button class="toggle-btn" onclick="toggleDetails('${prefix}', ${index})">Show Details</button>
+      <div class="details" id="details-${prefix}-${index}">
+        <div class="section-heading">Skills:</div>
+        <ul>${role.skills.map(skill => `<li>${skill}</li>`).join("")}</ul>
+        <div class="section-heading">Interview Topics:</div>
+        <ul>${role.interviewTopics.map(topic => `<li>${topic}</li>`).join("")}</ul>
+      </div>
+    `;
+
+    container.appendChild(card);
+  });
+}
+
+
+    function toggleDetails(prefix, index) {
+      const details = document.getElementById(`details-${prefix}-${index}`);
+      details.style.display = details.style.display === "block" ? "none" : "block";
+    }
+
+    renderRoles(frontendContainer, frontendRoles, "frontend", imageURLs.frontend);
+    renderRoles(backendContainer, backendRoles, "backend", imageURLs.backend);
+    renderRoles(rolesContainer, roles, "card-bg", imageURLs.others);
+
+    function suggestRole() {
+      const q1 = document.getElementById('q1').value.toLowerCase();
+      const q2 = document.getElementById('q2').value.toLowerCase();
+      let suggestion = "";
+
+      if (q1.includes("html") || q1.includes("css") || q2.includes("visual")) {
+        suggestion = "Frontend Developer";
+      } else if (q1.includes("node") || q1.includes("express") || q2.includes("logic")) {
+        suggestion = "Backend Developer";
+      } else if (q1.includes("python") || q1.includes("data")) {
+        suggestion = "Data Scientist";
+      } else {
+        suggestion = "Explore multiple roles to find your best fit!";
+      }
+
+      document.getElementById('suggestionOutput').innerText = `You might be great as a ${suggestion}!`;
+    }
+
+  </script>
+</body>
+</html>

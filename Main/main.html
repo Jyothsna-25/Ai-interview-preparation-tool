@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>InterviewPrepAI</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" />
+</head>
+<body>
+
+<nav class="navbar" data-aos="fade-down">
+  <div class="logo">InterviewPrepAI</div>
+  <div class="hamburger" onclick="toggleMenu()">
+    &#9776;
+  </div>
+
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#">Home</a></li>
+    <li><a href="Roles/index.html">Roles</a></li>
+    <li><a href="interview-questions-ai/index.html">Practice</a></li>
+    <li><a href="Mock-Interview/mock.html">Mock Interview</a></li>
+    <li><a href="Dashboard/dashboard.html">Dashboard</a></li>
+  </ul>
+</nav>
+
+
+  <!-- 🧠 Interactive Welcome Section -->
+  <section class="hero interactive" data-aos="zoom-in">
+    <div class="hero-content">
+      <h1>Welcome to InterviewPrepAI</h1>
+      <p>Practice smart. Get hired faster.</p>
+      <a href="Roles/index.html" class="start-btn">Get Started</a>
+    </div>
+  </section>
+
+  <!-- 🌟 Quick Access Panels -->
+  <section class="quick-access" data-aos="fade-up">
+    <h2>What would you like to do?</h2>
+    <div class="card-grid">
+      <a href="Roles/index.html" class="card">🧑‍💻 Choose a Role</a>
+      <a href="interview-questions-ai/index.html" class="card">🤖 Start AI Practice</a>
+      <a href="Mock-Interview/mock.html" class="card">🎤 Take a Mock Interview</a>
+      <a href="Dashboard/dashboard.html" class="card">📊 View Dashboard</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 InterviewPrepAI — Built to boost your confidence 💼</p>
+  </footer>
+
+  <!-- JS -->
+  <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+  <script>AOS.init();</script>
+  <script>
+  function toggleMenu() {
+    const nav = document.getElementById("navLinks");
+    nav.classList.toggle("show");
+  }
+</script>
+</body>
+</html>

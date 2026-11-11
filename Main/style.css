@@ -1,0 +1,158 @@
+/* Navbar */
+body{
+  margin: 0;
+  padding: 0;
+}
+
+.navbar {
+  background: linear-gradient(to right, #6a11cb, #2575fc);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  color: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s ease;
+}
+.hamburger {
+  font-size: 2rem;
+  display: none;
+  cursor: pointer;
+}
+
+.navbar:hover {
+  background: linear-gradient(to right, #8e2de2, #4a00e0);
+}
+
+.navbar .logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+  list-style: none;
+}
+
+.nav-links li a {
+  font-size: 1.1rem;
+  padding: 8px 14px;
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+.nav-links li a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: yellow;
+}
+
+/* Hero Section */
+.hero {
+  padding: 100px 20px;
+  background: linear-gradient(120deg, #89f7fe, #66a6ff);
+  text-align: center;
+  color: #222;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+}
+
+.start-btn {
+  padding: 12px 24px;
+  background: #4a00e0;
+  color: white;
+  border-radius: 25px;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: 0.3s;
+}
+
+.start-btn:hover {
+  background: #8e2de2;
+}
+
+/* Quick Access Section */
+.quick-access {
+  padding: 60px 20px;
+  background: #f4f8ff;
+  text-align: center;
+}
+
+.quick-access h2 {
+  margin-bottom: 30px;
+  font-size: 2rem;
+}
+
+.card-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.card {
+  background: white;
+  padding: 25px 35px;
+  border-radius: 15px;
+  text-decoration: none;
+  color: #333;
+  font-size: 1.2rem;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  background: #e0eaff;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #111;
+  color: #aaa;
+}
+
+@media screen and (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    position: absolute;
+    top: 70px;
+    right: 0;
+    width: 100%;
+    text-align: center;
+    gap: 10px;
+    padding: 20px 0;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .nav-links li a {
+    padding: 12px;
+    font-size: 1.1rem;
+  }
+}

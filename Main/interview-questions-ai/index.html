@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>InterviewPrepAI | Practice</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav class="navbar" data-aos="fade-down">
+    <div class="logo">InterviewPrepAI</div>
+    <div class="hamburger" onclick="toggleMenu()">
+      &#9776;
+    </div>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../main.html">Home</a></li>
+      <li><a href="../Roles/index.html">Roles</a></li>
+      <li><a href="#">Practice</a></li>
+      <li><a href="../Mock-Interview/mock.html">Mock Interview</a></li>
+      <li><a href="../Dashboard/dashboard.html">Dashboard</a></li>
+    </ul>
+  </nav>
+
+<div class="section">
+    <h2 >🗺️ Frontend Developer Roadmap</h2>
+    <p>Follow these learning stages to become a strong frontend developer.</p>
+    <div class="roadmap-grid">
+      <div class="roadmap-card">
+        <h4>Stage 1: Fundamentals</h4>
+        <ul>
+          <li>Learn HTML5 semantic structure</li>
+          <li>Master CSS (Flexbox, Grid)</li>
+          <li>Understand basic JavaScript</li>
+        </ul>
+      </div>
+      <div class="roadmap-card">
+        <h4>Stage 2: Advanced JavaScript</h4>
+        <ul>
+          <li>ES6+ features</li>
+          <li>Asynchronous JS (Promises, async/await)</li>
+          <li>DOM Manipulation & Events</li>
+        </ul>
+      </div>
+      <div class="roadmap-card">
+        <h4>Stage 3: Frameworks</h4>
+        <ul>
+          <li>React.js fundamentals</li>
+          <li>React Hooks & State Management</li>
+          <li>Component-driven development</li>
+        </ul>
+      </div>
+      <div class="roadmap-card">
+        <h4>Stage 4: Project & Deployment</h4>
+        <ul>
+          <li>Build portfolio projects</li>
+          <li>Version control with Git</li>
+          <li>Deploy using Vercel/Netlify</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <h1>Interview Practice - Choose Your Role</h1>
+
+ <div class="role-section">
+  <div class="role-title">Frontend Developer</div>
+  <div class="card-grid">
+
+    <!-- HTML Basics Card -->
+    <div class="flash-card">
+      <div class="card-title">HTML Basics</div>
+      <div class="card-content">
+        <h3>HTML Essentials</h3>
+        <ul>
+          <li>📄 Structure: Headings, paragraphs, lists</li>
+          <li>🔗 Hyperlinks, images, audio/video embeds</li>
+          <li>📦 Forms and Input elements</li>
+          <li>📚 Resource: 
+            <a href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank">MDN HTML Docs</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- CSS Styling Card -->
+    <div class="flash-card">
+      <div class="card-title">CSS Styling</div>
+      <div class="card-content">
+        <h3>Styling the Web</h3>
+        <ul>
+          <li>🎨 Selectors, Colors, Fonts, and Box Model</li>
+          <li>📐 Layouts with Flexbox and Grid</li>
+          <li>📱 Responsive Design using Media Queries</li>
+          <li>🎭 Animations & Transitions for interactivity</li>
+          <li>📚 Resource: 
+            <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" target="_blank">CSS Tricks Flexbox Guide</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- JavaScript Card -->
+    <div class="flash-card">
+      <div class="card-title">JavaScript</div>
+      <div class="card-content">
+        <h3>Programming for the Web</h3>
+        <ul>
+          <li>📦 Variables, Data Types, and Operators</li>
+          <li>⚙️ Functions, Loops, and Conditions</li>
+          <li>🧠 DOM Manipulation and Event Handling</li>
+          <li>🌐 Fetch API & Asynchronous Programming (Promises, async/await)</li>
+          <li>📚 Resource: 
+            <a href="https://javascript.info/" target="_blank">The Modern JavaScript Tutorial</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- React Card -->
+    <div class="flash-card">
+      <div class="card-title">React</div>
+      <div class="card-content">
+        <h3>Component-Based Development</h3>
+        <ul>
+          <li>🔧 Create & Manage Components</li>
+          <li>🧩 Use Props and State effectively</li>
+          <li>♻️ Lifecycle Methods & useEffect Hook</li>
+          <li>📦 Routing with React Router & basic state management</li>
+          <li>📚 Resource: 
+            <a href="https://react.dev/learn" target="_blank">Official React Docs</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+ <div class="role-section">
+  <div class="role-title">Backend Developer</div>
+  <div class="card-grid">
+
+    <!-- Node.js Card -->
+    <div class="flash-card">
+      <div class="card-title">Node.js</div>
+      <div class="card-content">
+        <h3>JavaScript on the Server</h3>
+        <ul>
+          <li>⚙️ Non-blocking, event-driven architecture</li>
+          <li>📦 Use npm modules and packages</li>
+          <li>🚀 Build high-performance backend apps</li>
+          <li>🧪 Use tools like nodemon & dotenv</li>
+          <li>📚 Resource: 
+            <a href="https://nodejs.dev/en/learn/" target="_blank">Node.js Official Docs</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Express.js Card -->
+    <div class="flash-card">
+      <div class="card-title">Express.js</div>
+      <div class="card-content">
+        <h3>Minimal & Flexible Framework</h3>
+        <ul>
+          <li>🌐 Build RESTful APIs</li>
+          <li>🛣️ Route handling and middleware setup</li>
+          <li>🛡️ Error handling and input validation</li>
+          <li>🧩 Integrate with templating engines & databases</li>
+          <li>📚 Resource: 
+            <a href="https://expressjs.com/en/starter/installing.html" target="_blank">Express Official Guide</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Databases Card -->
+    <div class="flash-card">
+      <div class="card-title">Databases</div>
+      <div class="card-content">
+        <h3>Store & Query Data</h3>
+        <ul>
+          <li>🗃️ SQL (MySQL/PostgreSQL): Structured data & joins</li>
+          <li>📦 NoSQL (MongoDB): Flexible schema, JSON-like documents</li>
+          <li>🔗 Connect via ORM/ODM: Sequelize, Mongoose</li>
+          <li>📈 Perform CRUD operations and data relationships</li>
+          <li>📚 Resource: 
+            <a href="https://www.mongodb.com/docs/manual/" target="_blank">MongoDB Docs</a> |
+            <a href="https://dev.mysql.com/doc/" target="_blank">MySQL Docs</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Authentication Card -->
+    <div class="flash-card">
+      <div class="card-title">Authentication</div>
+      <div class="card-content">
+        <h3>Secure User Access</h3>
+        <ul>
+          <li>🔐 JWT (JSON Web Tokens) & Session Auth</li>
+          <li>🔁 OAuth2 for third-party login (Google, GitHub)</li>
+          <li>🧠 Password hashing with bcrypt</li>
+          <li>🛡️ Role-based access and middleware protection</li>
+          <li>📚 Resource: 
+            <a href="https://jwt.io/introduction" target="_blank">JWT Intro</a> |
+            <a href="https://auth0.com/docs" target="_blank">Auth0 Docs</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+<div class="role-section">
+  <div class="role-title">Data Scientist</div>
+  <div class="card-grid">
+
+    <!-- Python & Libraries Card -->
+    <div class="flash-card">
+      <div class="card-title">Python & Libraries</div>
+      <div class="card-content">
+        <h3>Core Tools for Data Science</h3>
+        <ul>
+          <li>🐍 Use Python for scripting & analysis</li>
+          <li>📊 Pandas for data manipulation</li>
+          <li>🔢 NumPy for numerical computing</li>
+          <li>📈 Matplotlib & Seaborn for visualization</li>
+          <li>📚 Resource: 
+            <a href="https://pandas.pydata.org/docs/" target="_blank">Pandas Docs</a> |
+            <a href="https://numpy.org/doc/" target="_blank">NumPy Docs</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Data Cleaning Card -->
+    <div class="flash-card">
+      <div class="card-title">Data Cleaning</div>
+      <div class="card-content">
+        <h3>Prepare Quality Data</h3>
+        <ul>
+          <li>🧼 Handle missing & null values</li>
+          <li>🧮 Detect and treat outliers</li>
+          <li>🔍 Standardize formats and fix typos</li>
+          <li>📊 Use Pandas & regex for cleaning pipelines</li>
+          <li>📚 Resource: 
+            <a href="https://www.kaggle.com/learn/data-cleaning" target="_blank">Kaggle Data Cleaning Course</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Machine Learning Card -->
+    <div class="flash-card">
+      <div class="card-title">Machine Learning</div>
+      <div class="card-content">
+        <h3>Build Smart Models</h3>
+        <ul>
+          <li>🧠 Use Scikit-learn for model training</li>
+          <li>🔢 Algorithms: Linear Regression, KNN, Decision Trees</li>
+          <li>📊 Evaluation metrics: Accuracy, Precision, Recall, F1</li>
+          <li>🛠️ Perform cross-validation & hyperparameter tuning</li>
+          <li>📚 Resource: 
+            <a href="https://scikit-learn.org/stable/" target="_blank">Scikit-learn Docs</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Deep Learning Card -->
+    <div class="flash-card">
+      <div class="card-title">Deep Learning</div>
+      <div class="card-content">
+        <h3>Neural Networks & Beyond</h3>
+        <ul>
+          <li>🧬 Understand neurons, layers, and activations</li>
+          <li>🧠 Build models with TensorFlow & PyTorch</li>
+          <li>🖼️ Applications: Image, speech & NLP tasks</li>
+          <li>⚙️ Use Keras for quick prototyping</li>
+          <li>📚 Resource: 
+            <a href="https://www.tensorflow.org/learn" target="_blank">TensorFlow Tutorials</a> |
+            <a href="https://pytorch.org/tutorials/" target="_blank">PyTorch Tutorials</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="role-section">
+  <div class="role-title">DevOps Engineer</div>
+  <div class="card-grid">
+
+    <!-- CI/CD Card -->
+    <div class="flash-card">
+      <div class="card-title">CI/CD</div>
+      <div class="card-content">
+        <h3>Automate Code Delivery</h3>
+        <ul>
+          <li>🔄 Continuous Integration with Jenkins, GitHub Actions</li>
+          <li>🚀 Continuous Deployment with pipelines</li>
+          <li>🛡️ Run tests automatically before deployment</li>
+          <li>⚙️ Configure YAML workflows and triggers</li>
+          <li>📚 Resource: 
+            <a href="https://www.jenkins.io/doc/" target="_blank">Jenkins Docs</a> |
+            <a href="https://docs.github.com/en/actions" target="_blank">GitHub Actions</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Docker Card -->
+    <div class="flash-card">
+      <div class="card-title">Docker</div>
+      <div class="card-content">
+        <h3>Build Once, Run Anywhere</h3>
+        <ul>
+          <li>📦 Containerize applications using Docker</li>
+          <li>🧱 Use Dockerfiles, Images, and Containers</li>
+          <li>🛠️ Manage multi-container apps with Docker Compose</li>
+          <li>🔁 Versioning and pushing to Docker Hub</li>
+          <li>📚 Resource: 
+            <a href="https://docs.docker.com/get-started/" target="_blank">Docker Docs</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Kubernetes Card -->
+    <div class="flash-card">
+      <div class="card-title">Kubernetes</div>
+      <div class="card-content">
+        <h3>Scale with Confidence</h3>
+        <ul>
+          <li>📊 Orchestrate containers with Kubernetes</li>
+          <li>🔁 Use Pods, Deployments, and Services</li>
+          <li>⚙️ Master kubeconfig & kubectl commands</li>
+          <li>🌐 Expose and scale microservices efficiently</li>
+          <li>📚 Resource: 
+            <a href="https://kubernetes.io/docs/home/" target="_blank">Kubernetes Docs</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Monitoring & Logging Card -->
+    <div class="flash-card">
+      <div class="card-title">Monitoring & Logging</div>
+      <div class="card-content">
+        <h3>Track, Alert & Debug</h3>
+        <ul>
+          <li>📈 Use Prometheus to collect and store metrics</li>
+          <li>📊 Visualize with Grafana dashboards</li>
+          <li>📦 Log aggregation using ELK (Elasticsearch, Logstash, Kibana)</li>
+          <li>⚠️ Setup alerts and anomaly detection</li>
+          <li>📚 Resource: 
+            <a href="https://prometheus.io/docs/introduction/overview/" target="_blank">Prometheus Docs</a> |
+            <a href="https://grafana.com/docs/" target="_blank">Grafana Docs</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="form-conatiner">
+  <!-- Container -->
+  <div class="container">
+    
+    <h2>
+      🎯 Interview Practice Setup</h2>
+
+    <form id="practiceForm">
+      <!-- Select Role -->
+      <div>
+        <label for="role">Select Role</label>
+        <select id="role" name="role">
+          <option value="">-- Select Role --</option>
+          <option value="Frontend Developer">Frontend Developer</option>
+          <option value="Backend Developer">Backend Developer</option>
+          <option value="Data Analyst">Data Analyst</option>
+          <option value="HR Manager">HR Manager</option>
+        </select>
+      </div>
+
+      <!-- Question Type -->
+      <div>
+        <label for="questionType">Question Type</label>
+        <select id="questionType" name="questionType">
+          <option value="">-- Select Type --</option>
+          <option value="Coding">Coding</option>
+          <option value="HR">HR</option>
+          <option value="Aptitude">Aptitude</option>
+          <option value="Behavioral">Behavioral</option>
+        </select>
+      </div>
+
+      <!-- Experience Level -->
+      <div>
+        <label for="experience">Experience Level</label>
+        <select id="experience" name="experience">
+          <option value="">-- Select Experience --</option>
+          <option value="Fresher">Fresher</option>
+          <option value="0-1 years">0-1 years</option>
+          <option value="1-3 years">1-3 years</option>
+          <option value="3+ years">3+ years</option>
+        </select>
+      </div>
+
+      <!-- Difficulty -->
+      <div>
+        <label for="difficulty">Difficulty Level</label>
+        <select id="difficulty" name="difficulty">
+          <option value="">-- Select Difficulty --</option>
+          <option value="Easy">Easy</option>
+          <option value="Medium">Medium</option>
+          <option value="Hard">Hard</option>
+        </select>
+      </div>
+
+      <!-- Number of Questions -->
+      <div>
+        <label for="count">Number of Questions</label>
+        <select name="count" id="count">
+          <option value="5">5</option>
+          <option value="10" selected>10</option>
+          <option value="15">15</option>
+        </select>
+      </div>
+
+      <!-- Upload Resume -->
+      <div>
+        <label for="resume">Upload Resume (PDF/TXT)</label>
+        <input type="file" id="resume" name="resume" accept=".pdf,.txt">
+      </div>
+
+      <!-- Submit -->
+      <div class="text-center">
+        <button type="submit">
+          🚀 Generate Questions
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById("navLinks");
+      nav.classList.toggle("show");
+    }
+  </script>
+  <script>
+    async function generateQuestions() {
+      const role = document.getElementById("roleInput").value.trim();
+      const experience = document.getElementById("experienceInput").value;
+      const difficulty = document.getElementById("difficultyInput").value;
+
+      if (!role) return alert("Please enter a role.");
+
+      try {
+        const response = await fetch("/generate-questions", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            role: `${role} (${experience}, ${difficulty})`
+          })
+        });
+
+        const data = await response.json();
+        const qaSection = document.getElementById("qaSection");
+        qaSection.innerHTML = "";
+
+        if (Array.isArray(data.questions)) {
+          data.questions.forEach((q, i) => {
+            const card = document.createElement("div");
+            card.className = "qa-card";
+            card.innerHTML = `
+              <h3>Q${i+1}: ${q.q}</h3>
+              <p><strong>Sample Answer:</strong> ${q.a || "[Your answer can go here or be dynamically generated]"}</p>
+            `;
+            qaSection.appendChild(card);
+          });
+        } else {
+          qaSection.innerHTML = "<p>Failed to load questions.</p>";
+        }
+      } catch (err) {
+        document.getElementById("qaSection").innerHTML = "<p>Server error.</p>";
+        console.error(err);
+      }
+    }
+
+    document.getElementById("practiceForm").addEventListener("submit", async function(e) {
+      e.preventDefault();
+      const form = e.target;
+      const formData = new FormData(form);
+      const file = formData.get("resume");
+      const reader = new FileReader();
+
+      reader.onload = function () {
+        const resumeText = reader.result;
+        const interviewData = {
+          role: formData.get("role"),
+          type: formData.get("questionType"),
+          experience: formData.get("experience"),
+          difficulty: formData.get("difficulty"),
+          count: formData.get("count"),
+          resumeText
+        };
+        localStorage.setItem("interviewData", JSON.stringify(interviewData));
+        window.location.href = "./questions.html";
+      };
+
+      if (file) {
+        reader.readAsText(file);
+      } else {
+        const interviewData = {
+          role: formData.get("role"),
+          type: formData.get("questionType"),
+          experience: formData.get("experience"),
+          difficulty: formData.get("difficulty"),
+          count: formData.get("count"),
+          resumeText: ""
+        };
+        localStorage.setItem("interviewData", JSON.stringify(interviewData));
+        window.location.href = "./questions.html";
+      }
+    });
+
+    document.getElementById("practiceForm").addEventListener("submit", async function(e) {
+      e.preventDefault();
+      const form = e.target;
+      const formData = new FormData(form);
+      const file = formData.get("resume");
+
+      const saveData = (resumeText) => {
+      const interviewData = {
+          role: formData.get("role"),
+          type: formData.get("questionType"),
+          experience: formData.get("experience"),
+          difficulty: formData.get("difficulty"),
+          count: formData.get("count"),
+          resumeText: resumeText || ""
+        };
+        localStorage.setItem("interviewData", JSON.stringify(interviewData));
+        window.location.href = "./questions.html";
+      };
+
+      if (file && file.size > 0) {
+        if (file.type === "text/plain") {
+          const reader = new FileReader();
+          reader.onload = function () {
+            let resumeText = reader.result.substring(0, 1000); 
+            saveData(resumeText);
+          };
+          reader.readAsText(file);
+        } else if (file.type === "application/pdf") {
+          alert("Note: PDF files cannot be processed directly for text extraction in this demo. The form will proceed without resume data.");
+          saveData("");
+        } else {
+          alert("Unsupported file type. The form will proceed without resume data.");
+          saveData("");
+        }
+      } else {
+        saveData("");
+      }
+    });
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,259 @@
+/* General Reset */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: #fdfbff;
+  color: #2c2c2c;
+  scroll-behavior: smooth;
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar h1 {
+  font-size: 24px;
+  color: #333;
+}
+
+.nav-buttons a {
+  margin-left: 15px;
+  text-decoration: none;
+  background: #007BFF;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 6px;
+  transition: background 0.3s;
+  font-weight: 500;
+}
+
+.nav-buttons a:hover {
+  background: #0056b3;
+}
+
+.start-btn {
+  background-color: #28a745;
+  color: #fff;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: background 0.3s;
+}
+
+.start-btn:hover {
+  background-color: #218838;
+}
+
+/* Hero Section */
+.hero {
+  background-image: url('../images/interview.png');
+  color: rgb(7, 4, 4);
+  text-align: center;
+  padding: 150px 20px;
+  background-size: cover;
+  background-repeat: no-repeat; 
+}
+.hero h1 {
+  font-size: 3.2rem;
+  margin-bottom: 10px;
+}
+.hero p {
+  font-size: 1.3rem;
+}
+.start-btn {
+  margin-top: 25px;
+  display: inline-block;
+  background: #021325;
+  color: white;
+  padding: 12px 28px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+.start-btn:hover {
+  background: #2575fc;
+  color: #fff;
+  box-shadow: 0 0 10px rgba(255,255,255,0.4);
+}
+/* About */
+.about {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 70px 30px;
+  background: #fff;
+}
+.about-text {
+  flex: 1;
+  padding: 20px;
+}
+.about-img {
+  flex: 1;
+  text-align: center;
+}
+.about-img img {
+  max-width: 320px;
+}
+
+/* Features */
+.features {
+  padding: 60px 30px;
+  background: linear-gradient(to bottom, #9bd9f5, #6cb4db);
+  text-align: center;
+}
+.features h2 {
+  margin-bottom: 30px;
+}
+.features-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+}
+.feature-card {
+  background: #fff;
+  padding: 25px;
+  border-radius: 14px;
+  width: 280px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  transition: transform 0.3s;
+}
+.feature-card:hover {
+  transform: translateY(-5px);
+}
+.feature-card img {
+  width: 60px;
+  margin-bottom: 15px;
+}
+
+/* How It Works */
+.how-it-works {
+  background: #f3e8c2;
+  padding: 60px 30px;
+  text-align: center;
+}
+.how-it-works h2 {
+  margin-bottom: 30px;
+}
+.how-it-works .step {
+  margin: 18px 0;
+  font-size: 1.1rem;
+}
+
+/* Role Search */
+.role-search {
+  padding: 60px 30px;
+  background: #bdd5e8;
+  text-align: center;
+}
+.role-search input {
+  padding: 12px;
+  width: 60%;
+  max-width: 400px;
+  border-radius: 10px;
+  border: 2px solid #ccc;
+  outline: none;
+  font-size: 1rem;
+  margin-bottom: 20px;
+  transition: border-color 0.3s;
+}
+.role-search input:focus {
+  border-color: #2575fc;
+}
+#roleList {
+  list-style: none;
+  padding: 0;
+}
+#roleList li {
+  padding: 10px;
+  margin: 5px auto;
+  width: 60%;
+  max-width: 400px;
+  background: #f8f4f4;
+  border-radius: 10px;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+  transition: 0.3s;
+}
+#roleList li:hover {
+  background: #f0f9ff;
+}
+
+/* Roles Preview */
+.roles-preview {
+  padding: 60px 30px;
+  background: #ffffff;
+  text-align: center;
+}
+.role-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+.role-card {
+  background: linear-gradient(135deg, #f6d365, #fda085);
+  color: #fdfdfd;
+  padding: 18px 30px;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 1rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  transition: 0.3s;
+}
+.role-card:hover {
+  transform: scale(1.05);
+}
+
+/* Testimonials */
+.testimonials {
+  padding: 60px 30px;
+  background: #e8e9ee;
+  text-align: center;
+}
+.testimonial-card {
+  margin: 20px auto;
+  max-width: 500px;
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.testimonial-card p {
+  font-style: italic;
+}
+
+/* Stats */
+.stats {
+  background: #fff1f1;
+  padding: 40px 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  text-align: center;
+}
+.stat {
+  background: #fff;
+  padding: 20px 30px;
+  font-size: 1.2rem;
+  border-radius: 12px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+}
+
+/* Footer */
+footer {
+  background: #2c3e50;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}

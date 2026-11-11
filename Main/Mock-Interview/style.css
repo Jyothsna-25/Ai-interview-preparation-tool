@@ -1,0 +1,240 @@
+   body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(to bottom right, #e3f2fd, #fff3e0);
+  color: #333;
+  margin: 0;
+}
+
+.navbar {
+  background: linear-gradient(to right, #6a11cb, #2575fc);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 32px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  color: white;
+}
+.navbar .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.nav-links {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+}
+.nav-links li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  padding: 5px 10px;
+  font-size: 20px;
+}
+.nav-links li a:hover,
+.nav-links li a.active {
+  color: yellow;
+  border-bottom: 2px solid yellow;
+}
+
+.hamburger {
+  font-size: 2rem;
+  display: none;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    position: absolute;
+    top: 70px;
+    right: 0;
+    width: 100%;
+    text-align: center;
+    gap: 10px;
+    padding: 20px 0;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .nav-links li a {
+    padding: 12px;
+    font-size: 1.1rem;
+  }
+}
+
+.holder{
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.container {
+  max-width: 800px;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  color: #2c3e50;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 2em;
+}
+
+label {
+  display: block;
+  margin-top: 15px;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+select,
+input[type=number],
+textarea {
+  padding: 12px;
+  width: 100%;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  margin-top: 8px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+button {
+  background: linear-gradient(45deg, #42a5f5, #66bb6a);
+  border: none;
+  color: white;
+  padding: 12px;
+  font-size: 1rem;
+  border-radius: 10px;
+  margin-top: 15px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  width: 100%;
+}
+
+button:hover {
+  transform: scale(1.03);
+  box-shadow: 0 5px 15px rgba(66, 165, 245, 0.3);
+}
+
+.question {
+  font-size: 1.1rem;
+  font-weight: bold;
+  background: #fffde7;
+  padding: 15px;
+  border-radius: 10px;
+  margin-top: 20px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.controls {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#timer {
+  text-align: right;
+  font-weight: bold;
+  color: #444;
+  margin-top: 5px;
+}
+
+.progress-bar {
+  height: 20px;
+  background: #cfd8dc;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #66bb6a, #81c784);
+  width: 0%;
+  transition: width 0.5s;
+}
+
+.shake {
+  animation: shake 0.4s;
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
+
+.summary-section {
+  background: #f1f8e9;
+  border-radius: 12px;
+  padding: 20px;
+  margin-top: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+#reviewContent > div {
+  margin-bottom: 15px;
+  background: #ffffff;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+canvas {
+  width: 100% !important;
+  height: 300px !important;
+  margin: 20px auto;
+  max-width: 600px;
+  border-radius: 10px;
+  background: white;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 600px) {
+  .container {
+    padding: 15px;
+  }
+
+  h1 {
+    font-size: 1.5em;
+  }
+
+  .question {
+    font-size: 1rem;
+    padding: 12px;
+  }
+
+  textarea {
+    font-size: 14px;
+  }
+
+  button {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  #timer {
+    text-align: left;
+  }
+}

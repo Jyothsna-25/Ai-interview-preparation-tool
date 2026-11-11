@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Login - InterviewPrepAI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+      --primary: #00796b;
+      --secondary: #004d40;
+      --bg-light: #e0f7fa;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, var(--bg-light), #b2ebf2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      animation: fadeIn 1s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .container {
+      background-color: var(--white);
+      padding: 35px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      width: 90%;
+      max-width: 400px;
+      transition: all 0.4s ease;
+    }
+
+    h1 {
+      color: var(--primary);
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      color: var(--secondary);
+      text-align: center;
+      margin-bottom: 25px;
+      font-size: 20px;
+    }
+
+    input, button {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      font-size: 15px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 10px #b2dfdb;
+      outline: none;
+    }
+
+    button {
+      background-color: var(--primary);
+      color: var(--white);
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: var(--secondary);
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .message {
+      margin-top: 8px;
+      text-align: center;
+      font-weight: bold;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 14px;
+      margin-top: 10px;
+    }
+
+    .form-section {
+      display: none;
+      animation: fadeIn 0.4s ease;
+    }
+
+    .form-section.active {
+      display: block;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>InterviewPrepAI</h1>
+    <div id="loginSection" class="form-section active">
+      <h2>Login to your account</h2>
+      <form id="loginForm">
+        <input type="email" id="email" placeholder="Email" required />
+        <input type="password" id="password" placeholder="Password" required />
+        <button type="submit">Login</button>
+        <div id="message" class="message"></div>
+      </form>
+      <div class="footer">
+        <p>Don’t have an account? <a href="signup.html">Sign up here</a></p>
+        <p><a onclick="switchToReset()">Forgot Password?</a></p>
+      </div>
+    </div>
+
+    <div id="resetSection" class="form-section">
+      <h2>Reset Your Password</h2>
+      <form>
+        <input type="email" id="resetEmail" placeholder="Enter your registered email" />
+        <input type="password" id="newPassword" placeholder="Enter new password" />
+        <button type="button" onclick="resetPassword()">Reset Password</button>
+        <div id="resetMessage" class="message"></div>
+        <div class="footer">
+          <p><a onclick="switchToLogin()">Back to Login</a></p>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    function switchToReset() {
+      document.getElementById("loginSection").classList.remove("active");
+      document.getElementById("resetSection").classList.add("active");
+    }
+
+    function switchToLogin() {
+      document.getElementById("resetSection").classList.remove("active");
+      document.getElementById("loginSection").classList.add("active");
+    }
+
+    document.getElementById("loginForm").addEventListener("submit", async function (e) {
+  e.preventDefault();
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  const response = await fetch("http://localhost:5000/login", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email, password })
+  });
+
+  const result = await response.json();
+  const messageEl = document.getElementById("message");
+  messageEl.innerText = result.message;
+  messageEl.style.color = result.success ? "green" : "red";
+
+  if (result.success) {
+    // Redirect after successful login
+    setTimeout(() => {
+      localStorage.setItem("email", email); // store user email instead
+      window.location.href = "../Main/main.html"; 
+    }, 1000);
+  }
+});
+
+  </script>
+</body>
+</html>

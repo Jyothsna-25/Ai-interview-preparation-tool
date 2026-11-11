@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AI Mock Interview</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #e3f2fd, #ffffff);
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+    }
+
+    
+   .navbar {
+      background: linear-gradient(to right, #6a11cb, #2575fc);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 32px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      color: white;
+    }
+    .navbar .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    .nav-links {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+    }
+    .nav-links li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+      padding: 5px 10px;
+      font-size: 20px;
+    }
+    .nav-links li a:hover,
+    .nav-links li a.active {
+      color: yellow;
+      border-bottom: 2px solid yellow;
+    }
+
+    .hamburger {
+      font-size: 2rem;
+      display: none;
+      cursor: pointer;
+    }
+
+    @media screen and (max-width: 768px) {
+      .hamburger {
+        display: block;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        background: linear-gradient(to right, #6a11cb, #2575fc);
+        position: absolute;
+        top: 70px;
+        right: 0;
+        width: 100%;
+        text-align: center;
+        gap: 10px;
+        padding: 20px 0;
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+
+      .nav-links li a {
+        padding: 12px;
+        font-size: 1.1rem;
+      }
+    }
+
+    .header{
+      margin-bottom: 30px;
+    }
+
+    .container {
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    h1, h2 {
+      text-align: center;
+      color: #1976d2;
+    }
+    label {
+      display: block;
+      margin: 15px 0 5px;
+      font-weight: bold;
+    }
+    input[type="text"], select, textarea, input[type="file"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 2px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #1976d2;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    button:hover {
+      background-color: #1565c0;
+    }
+    .btn-group {
+      display: flex;
+      justify-content: space-between;
+    }
+    .mic-section {
+      text-align: center;
+    }
+    #micButton {
+      background-color: #43a047;
+    }
+    #micStatus {
+      font-size: 14px;
+      color: #555;
+      margin-top: 5px;
+    }
+    #question-box {
+      background-color: #f5f5f5;
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+    #emoji-feedback {
+      text-align: center;
+      font-size: 24px;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    
+  <nav class="navbar" data-aos="fade-down">
+    <div class="logo">InterviewPrepAI</div>
+    <div class="hamburger" onclick="toggleMenu()">
+      &#9776;
+    </div>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../main.html">Home</a></li>
+      <li><a href="../Roles/index.html">Roles</a></li>
+      <li><a href="../interview-questions-ai/index.html">Practice</a></li>
+      <li><a href="#">Mock Interview</a></li>
+      <li><a href="../Dashboard/dashboard.html">Dashboard</a></li>
+    </ul>
+  </nav>
+
+  </div>
+  <div class="container">
+    <h1>🤖 AI Mock Interview</h1>
+
+    <div id="auth-section">
+      <label>Name:</label>
+      <input type="text" id="username" placeholder="Enter your name" />
+      <label>Upload Resume (PDF):</label>
+      <input type="file" id="resume" accept=".pdf" />
+      <button onclick="startInterview()">Start</button>
+    </div>
+
+    <div id="role-section" style="display:none;">
+      <label>Role:</label>
+      <select id="role">
+        <option value="Frontend Developer">Frontend Developer</option>
+        <option value="Backend Developer">Backend Developer</option>
+        <option value="Data Scientist">Data Scientist</option>
+      </select>
+      <label>Experience:</label>
+      <select id="experience">
+        <option value="Fresher">Fresher</option>
+        <option value="1-3 Years">1-3 Years</option>
+        <option value="Senior">Senior</option>
+      </select>
+      <label>Interview Type:</label>
+      <select id="interviewType">
+        <option value="Technical">Technical</option>
+        <option value="HR">HR</option>
+      </select>
+      <button onclick="startSession()">Begin Interview</button>
+    </div>
+
+    <div id="interview-section" style="display:none;">
+      <div id="question-box"></div>
+      <textarea id="answer" placeholder="Type your answer or click 🎤 to speak..."></textarea>
+
+      <div class="mic-section">
+        <button id="micButton" onclick="toggleMic()">🎤 Speak</button>
+        <div id="micStatus"></div>
+      </div>
+
+      <div class="btn-group">
+        <button onclick="submitAnswer()">Next</button>
+        <button onclick="location.reload()">🔄 Restart</button>
+      </div>
+
+      <div id="emoji-feedback"></div>
+    </div>
+
+    <div id="result-section" style="display:none;">
+      <h2><span id="finalHeading"></span><br><span id="userNameResult"></span></h2>
+      <p>Total Questions: <span id="total"></span></p>
+      <p>Good Answers: <span id="score"></span></p>
+      <p id="customMessage"></p>
+      <button onclick="location.reload()">🔁 Start Again</button>
+    </div>
+
+    <div id="review-section" style="margin-top: 20px;"></div>
+  </div>
+
+  <script>
+    const apiUrl = "http://localhost:5000/generate";
+    const evalUrl = "http://localhost:5000/evaluate";
+
+    let userName = '';
+    let questionCount = 0;
+    let score = 0;
+    const maxQuestions = 10;
+    let currentQuestion = "";
+    const answers = [];
+    const correctAnswers = [];
+
+    const fallbackHRQuestions = [
+      "Tell me about yourself.",
+      "Why should we hire you?",
+      "What are your long-term career goals?",
+      "What is your biggest strength?",
+      "What is your greatest weakness?",
+      "How do you handle stress and pressure?",
+      "Why do you want to work at our company?",
+      "Describe a challenge you faced and how you handled it.",
+      "What motivates you?",
+      "How would your friends describe you?"
+    ];
+
+    const usedFallbackHRIndexes = new Set();
+
+    function startInterview() {
+      const fileInput = document.getElementById("resume");
+      const file = fileInput.files[0];
+      userName = document.getElementById("username").value.trim();
+
+      if (!userName || !file) {
+        alert("Please enter your name and upload resume!");
+        return;
+      }
+
+      document.getElementById("auth-section").style.display = "none";
+      document.getElementById("role-section").style.display = "block";
+    }
+
+    function startSession() {
+      document.getElementById("role-section").style.display = "none";
+      document.getElementById("interview-section").style.display = "block";
+      questionCount = 0;
+      score = 0;
+      answers.length = 0;
+      correctAnswers.length = 0;
+      usedFallbackHRIndexes.clear();
+      fetchNextQuestion();
+    }
+
+    async function fetchNextQuestion() {
+      if (questionCount >= maxQuestions) {
+        finishInterview();
+        return;
+      }
+
+      const role = document.getElementById("role").value;
+      const experience = document.getElementById("experience").value;
+      const type = document.getElementById("interviewType").value;
+
+      let prompt = "";
+
+      if (type === "HR") {
+        prompt = `Give a unique and casual HR interview question under 20 words like “Tell me about yourself” or “Why should we hire you?”`;
+      } else {
+        prompt = `Generate a short, unique technical interview question (max 20 words) for a ${experience} ${role}. Avoid common questions. Format: Question: ..., Answer: ...`;
+      }
+
+      let result = await getAIQuestion(prompt);
+
+      let question = "", answer = "";
+
+      const match = result.match(/Question:\s*(.+?)\s*Answer:\s*(.+)/i);
+      if (match) {
+        question = match[1].trim();
+        answer = match[2].trim();
+      } else if (type === "HR") {
+        let index;
+        do {
+          index = Math.floor(Math.random() * fallbackHRQuestions.length);
+        } while (usedFallbackHRIndexes.has(index) && usedFallbackHRIndexes.size < fallbackHRQuestions.length);
+        usedFallbackHRIndexes.add(index);
+        question = fallbackHRQuestions[index];
+        answer = "Not applicable";
+      } else {
+        question = result.split("Answer:")[0].trim();
+        answer = "Not provided";
+      }
+
+      currentQuestion = question;
+      correctAnswers.push(answer);
+      document.getElementById("question-box").innerText = `Q${questionCount + 1}: ${currentQuestion}`;
+      document.getElementById("emoji-feedback").innerText = "";
+      document.getElementById("answer").value = "";
+    }
+
+    async function submitAnswer() {
+      const answer = document.getElementById("answer").value.trim();
+      if (!answer) {
+        alert("Please enter your answer before continuing.");
+        return;
+      }
+
+      answers.push({ question: currentQuestion, answer });
+
+      try {
+        const res = await fetch(evalUrl, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ answer })
+        });
+
+        const data = await res.json();
+        const evalScore = data.score;
+
+        if (!isNaN(evalScore)) {
+          if (evalScore >= 7) {
+            score += 10;
+            document.getElementById("emoji-feedback").innerText = "👏 Great Answer!";
+          } else {
+            document.getElementById("emoji-feedback").innerText = "😓 Try to elaborate!";
+          }
+        } else {
+          document.getElementById("emoji-feedback").innerText = "❓ Couldn't score your answer.";
+        }
+      } catch (error) {
+        console.error("Evaluation Error:", error);
+        document.getElementById("emoji-feedback").innerText = "⚠ Evaluation failed.";
+      }
+
+      questionCount++;
+      await fetchNextQuestion();
+    }
+
+    function finishInterview() {
+  document.getElementById("interview-section").style.display = "none";
+  document.getElementById("result-section").style.display = "block";
+  document.getElementById("userNameResult").innerText = userName.toUpperCase();
+  document.getElementById("total").innerText = maxQuestions;
+  document.getElementById("score").innerText = score + " / " + (maxQuestions * 10);
+
+  const avg = score / 10;
+  let heading = "", message = "";
+
+  if (avg === 50) {
+    heading = "🎉 Congratulations!";
+    message = "Perfect score! You nailed it!";
+  } else if (avg >= 40) {
+    heading = "👏 Good Job!";
+    message = "Great effort! You're almost there.";
+  } else if (avg >= 30) {
+    heading = "👍 Nice!";
+    message = "Good work, keep practicing!";
+  } else if (avg >= 20) {
+    heading = "👌 Okay!";
+    message = "Decent attempt. Try improving more.";
+  } else if (avg >= 10) {
+    heading = "💪 Do Hard Work!";
+    message = "Keep learning and trying!";
+  } else {
+    heading = "😢 Better Luck Next Time!";
+    message = "Don’t give up! You can do it!";
+  }
+
+  document.getElementById("finalHeading").innerText = heading;
+  document.getElementById("customMessage").innerText = message;
+
+  // Review
+  let reviewHTML = "<h3>📋 Review Your Answers:</h3>";
+  answers.forEach((item, index) => {
+    reviewHTML += `
+      <div style="border:1px solid #ccc; border-radius:8px; padding:10px; margin:10px 0;">
+        <strong>Q${index + 1}: ${item.question}</strong><br>
+        <span style="color:#1976d2;"><b>Your Answer:</b> ${item.answer}</span><br>
+        <span style="color:green;"><b>Correct Answer:</b> ${correctAnswers[index]}</span>
+      </div>`;
+  });
+  document.getElementById("review-section").innerHTML = reviewHTML;
+
+  // Save score to MongoDB
+  const userEmail = localStorage.getItem("email"); // better than using name
+  if (userEmail) {
+    fetch("http://localhost:5000/save-score", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email: userEmail, score })
+    })
+    .then(res => res.json())
+    .then(data => console.log("Score saved:", data))
+    .catch(err => console.error("Score save error:", err));
+  }
+}
+
+
+    async function getAIQuestion(prompt) {
+      try {
+        const response = await fetch(apiUrl, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ prompt })
+        });
+
+        const data = await response.json();
+        return data.response || "Could not generate question.";
+      } catch (err) {
+        console.error(err);
+        return "Could not generate question (API error).";
+      }
+    }
+
+    
+
+    let recognition;
+    let isListening = false;
+
+    function toggleMic() {
+      if (!('webkitSpeechRecognition' in window)) {
+        alert("Your browser doesn't support Speech Recognition.");
+        return;
+      }
+
+      if (!recognition) {
+        recognition = new webkitSpeechRecognition();
+        recognition.continuous = false;
+        recognition.interimResults = false;
+        recognition.lang = 'en-US';
+
+        recognition.onresult = (event) => {
+          const transcript = event.results[0][0].transcript;
+          document.getElementById("answer").value += transcript;
+          document.getElementById("micStatus").innerText = "🎙 Done recording.";
+        };
+
+        recognition.onerror = () => {
+          document.getElementById("micStatus").innerText = "⚠ Mic error.";
+        };
+
+        recognition.onend = () => {
+          isListening = false;
+        };
+      }
+
+      if (!isListening) {
+        recognition.start();
+        isListening = true;
+        document.getElementById("micStatus").innerText = "🎧 Listening...";
+      } else {
+        recognition.stop();
+        document.getElementById("micStatus").innerText = "⏹ Stopped.";
+        isListening = false;
+      }
+    }
+    
+
+    
+
+  </script>
+  <script>
+    function toggleMenu() {
+      const nav = document.getElementById("navLinks");
+      nav.classList.toggle("show");
+    }
+  </script>
+</body>
+</html>

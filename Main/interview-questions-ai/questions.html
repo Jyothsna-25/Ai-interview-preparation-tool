@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Generated Questions</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .question-text {
+            color: #3b82f6; /* Tailwind's blue-500 */
+            font-weight: bold;
+        }
+        .answer-text {
+            color: #4b5563; /* Tailwind's gray-600 */
+        }
+    </style>
+</head>
+<body class="bg-gray-100 p-4 sm:p-8">
+
+    <div class="max-w-3xl mx-auto space-y-4">
+        
+        <div class="bg-white p-6 rounded-lg shadow-lg relative">
+            <h2 class="text-2xl font-bold mb-4 text-indigo-600">Generated Questions</h2>
+            <button onclick="window.print()" class="absolute top-4 right-4 bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 print:hidden">
+                🖨️ Print / Download
+            </button>
+            <div id="userInfo" class="mb-6 text-gray-700"></div>
+        </div>
+
+        <div id="questionBox" class="space-y-4">
+            <div class="bg-white p-6 rounded-lg shadow-lg">
+                <p class="text-gray-500">🔄 Generating questions...</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const storedData = localStorage.getItem("interviewData");
+        const questionBox = document.getElementById("questionBox");
+        const userInfo = document.getElementById("userInfo");
+
+        if (!storedData) {
+            questionBox.innerHTML = "<p class='text-red-600'>❌ No user data found! Please complete the interview setup form first.</p>";
+            throw new Error("No interview data in localStorage");
+        }
+
+        const userData = JSON.parse(storedData);
+        const { role, type, experience, difficulty, count, resumeText } = userData;
+
+        userInfo.innerHTML = `
+            <p><strong>Role:</strong> ${role}</p>
+            <p><strong>Question Type:</strong> ${type}</p>
+            <p><strong>Experience:</strong> ${experience}</p>
+            <p><strong>Difficulty:</strong> ${difficulty}</p>
+        `;
+
+        let prompt = "";
+
+        if (type.toLowerCase() === "aptitude") {
+          prompt = `Generate ${count} ${difficulty} level aptitude questions for interviews. Each question must be in MCQ format with 4 options and a correct answer with explanation. Format the response as a JSON object with a 'questions' array, where each object has 'question' and 'answer' properties.`;
+        } 
+        else if (type.toLowerCase() === "coding") {
+          prompt = `Generate ${count} ${difficulty} level coding interview questions for the role of ${role} with ${experience} experience. For each question, provide the problem statement in the 'question' key. For the 'answer' key, provide a JSON object containing the expected 'logic' and 'sampleCode'. Format the full response as a JSON object with a 'questions' array. Use this resume for context if needed:\n${resumeText || "No resume provided."}`;
+        } 
+        else if (["behavioral", "hr"].includes(type.toLowerCase())) {
+          prompt = `Generate ${count} ${difficulty} level ${type} interview questions for the role of ${role}. Each question should be scenario-based and include a strong sample answer. Format the response as a JSON object with a 'questions' array, where each object has 'question' and 'answer' properties. Use the resume if relevant:\n${resumeText || "No resume provided."}`;
+        } 
+        else {
+          prompt = `Generate ${count} ${difficulty} level interview questions with answers for the role of ${role}, type: ${type}, experience: ${experience}. Format the response as a JSON object with a 'questions' array, where each object has 'question' and 'answer' properties. Resume context: ${resumeText || "No resume provided."}`;
+        }
+
+        fetch("http://localhost:5000/api/gemini", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ prompt })
+        })
+        .then(res => {
+            if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`);
+            return res.json();
+        })
+        .then(data => {
+            const questionAnswerPairs = data?.questions;
+            if (!questionAnswerPairs || !Array.isArray(questionAnswerPairs)) {
+              throw new Error("Invalid or empty response from the API.");
+            }
+
+            questionBox.innerHTML = "";
+
+            questionAnswerPairs.forEach((qa, index) => {
+                const card = document.createElement("div");
+                card.className = "bg-white p-6 rounded-lg shadow-lg space-y-2";
+
+                const questionText = document.createElement("p");
+                questionText.className = "question-text";
+                questionText.textContent = `Question ${index + 1}: ${qa.question}`;
+
+                const answerText = document.createElement("p");
+                answerText.className = "answer-text mt-2";
+
+                if (typeof qa.answer === 'object' && qa.answer !== null) {
+                    const logic = qa.answer.logic || 'No logic provided.';
+                    const code = qa.answer.sampleCode || 'No sample code provided.';
+                    answerText.innerHTML = `
+                        <strong>Expected Logic:</strong>
+                        <br>${logic}
+                        <br><br>
+                        <strong>Sample Code:</strong>
+                        <pre><code>${code}</code></pre>
+                    `;
+                } else {
+                    answerText.innerHTML = `Sample Answer: ${qa.answer}`;
+                }
+
+                card.appendChild(questionText);
+                card.appendChild(answerText);
+                questionBox.appendChild(card);
+            });
+
+            // ✅ Update practiced questions in MongoDB
+            const email = localStorage.getItem("email");
+            const practicedCount = questionAnswerPairs.length;
+
+            if (email && practicedCount > 0) {
+                fetch("http://localhost:5000/user/practice-count", {
+                    method: "PUT",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ email, practiced: practicedCount })
+                })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(`✅ Updated practiced questions: ${data.questionsPracticed}`);
+                    const infoDiv = document.createElement("div");
+                    infoDiv.textContent = `📝 Total questions practiced: ${data.questionsPracticed}`;
+                    infoDiv.className = "text-green-600 font-semibold mt-2";
+                    questionBox.prepend(infoDiv);
+                })
+                .catch(err => console.error("❌ Failed to update practiced questions:", err));
+            }
+        })
+        .catch(error => {
+            console.error("❌ Error fetching questions:", error);
+            questionBox.innerHTML = `<p class="text-red-600">❌ Failed to get a response from the API.<br>Error: ${error.message}</p>`;
+        });
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sign Up | InterviewPrepAI</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #6a82fb;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.12);
+      padding: 40px 30px;
+      border-radius: 20px;
+      width: 100%;
+      max-width: 450px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+      backdrop-filter: blur(12px);
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 32px;
+      color: #fff;
+      margin-bottom: 10px;
+      text-shadow: 0 0 10px #00ffe7;
+    }
+
+    h2 {
+      text-align: center;
+      color: #f1f1f1;
+      font-size: 18px;
+      margin-bottom: 25px;
+    }
+
+    .form-control {
+      margin-bottom: 18px;
+    }
+
+    .form-control input,
+    .form-control select {
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      border: none;
+      outline: none;
+      font-size: 15px;
+      background: rgba(255, 255, 255, 0.85);
+      transition: all 0.3s ease;
+    }
+
+    .form-control input:focus,
+    .form-control select:focus {
+      background: #ffffff;
+      box-shadow: 0 0 10px #ffeb3b;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background: linear-gradient(to right, #ffe53b, #ff6a00);
+      border: none;
+      border-radius: 10px;
+      color: #000;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 12px #ffeb3b;
+    }
+
+    #message {
+      text-align: center;
+      margin-top: 10px;
+      color: #fff;
+      font-size: 14px;
+    }
+
+    p {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 14px;
+      color: #ffffff;
+    }
+
+    a {
+      color: #ffeb3b;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .icon {
+      text-align: center;
+      font-size: 36px;
+      color: #fff;
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="icon">🤖</div>
+    <h1>InterviewPrepAI</h1>
+    <form id="signupForm">
+      <div class="form-control">
+        <input type="text" id="name" placeholder="Full Name" required />
+      </div>
+      <div class="form-control">
+        <input type="email" id="email" placeholder="Email" required />
+      </div>
+      <div class="form-control">
+        <input type="password" id="password" placeholder="Password" required />
+      </div>
+      <div class="form-control">
+        <input type="text" id="role" placeholder="Target Role (e.g., Backend Developer)" required />
+      </div>
+      <div class="form-control">
+        <input type="number" id="experience" placeholder="Years of Experience" min="0" required />
+      </div>
+      <div class="form-control">
+        <select id="skillLevel" required>
+          <option value="">Select Skill Level</option>
+          <option value="beginner">Beginner</option>
+          <option value="intermediate">Intermediate</option>
+          <option value="advanced">Advanced</option>
+        </select>
+      </div>
+      <button type="submit">Sign Up</button>
+      <div id="message"></div>
+    </form>
+    <p>Already have an account? <a href="login.html">Login here</a></p>
+  </div>
+
+  <script>
+    document.getElementById("signupForm").addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      const role = document.getElementById("role").value;
+      const experience = document.getElementById("experience").value;
+      const skillLevel = document.getElementById("skillLevel").value;
+
+      try {
+        const response = await fetch("http://localhost:5000/signup", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name, email, password, role, experience, skillLevel }),
+        });
+
+        const data = await response.json();
+        const messageEl = document.getElementById("message");
+        messageEl.innerText = data.message;
+        messageEl.style.color = "green";
+
+        if (data.message === "Signup successful!") {
+          setTimeout(() => {
+            localStorage.setItem("email", email); // store user email instead
+            window.location.href = "../Main/main.html"; 
+          }, 1000); 
+        }
+
+      } catch (error) {
+        document.getElementById("message").innerText = "Something went wrong. Please try again.";
+      }
+    });
+  </script>
+</body>
+</html>
